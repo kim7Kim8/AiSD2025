@@ -1,9 +1,9 @@
 CXX = g++
-CXXFLAGS = -std=c++11
-TARGET = demo
+CXXFLAGS = -std=c++11 -Wall
+TARGET = random_sampling_demo
 
-$(TARGET): random_sampling.cpp
- $(CXX) $(CXXFLAGS) -o $(TARGET) random_sampling.cpp
+$(TARGET): main.cpp random_sampling.cpp random_sampling.hpp
+ $(CXX) $(CXXFLAGS) -o $(TARGET) main.cpp random_sampling.cpp
 
 clean:
  rm -f $(TARGET)
