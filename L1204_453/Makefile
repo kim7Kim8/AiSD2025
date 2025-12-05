@@ -1,14 +1,12 @@
 CXX = g++
-CXXFLAGS = -std=c++11 -O2
-TARGET = random_sampling.exe
+CXXFLAGS = -std=c++11
+TARGET = demo
 
-all: $(TARGET)
-
-$(TARGET): main.cpp random_sampling.cpp random_sampling.hpp
-	$(CXX) $(CXXFLAGS) -o $(TARGET) main.cpp random_sampling.cpp
+$(TARGET): random_sampling.cpp
+ $(CXX) $(CXXFLAGS) -o $(TARGET) random_sampling.cpp
 
 clean:
-	rm -f $(TARGET)
+ rm -f $(TARGET)
 
 run: $(TARGET)
-	./$(TARGET)
+ ./$(TARGET)
