@@ -1,0 +1,24 @@
+#include "tsp_sampling.hpp"
+
+void random_sampling(tsp_instance* t, int nsamples, tsp_solution* s) {
+    tsp_solution s_now;          //Текущее решение задачи коммивояжера 
+    double best_cost;            // Самая лучшая стоимость в настоящий момент 
+    double cost_now;             // Текущая стоимость 
+    int i;                       // Счетчик 
+    
+    initialize_solution(t->n, &s_now);
+    best_cost = solution_cost(&s_now, t);
+    copy_solution(&s_now, s);
+    
+    for (i = 1; i <= nsamples; i++) {
+        random_solution(&s_now);
+        cost_now = solution_cost(&s_now, t);
+        
+        if (cost_now < best_cost) {
+            best_cost = cost_now;
+            copy_solution(&s_now, s);
+        }
+        
+        solution_count_update(&s_now, t);
+    }
+}
